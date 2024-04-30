@@ -1,24 +1,48 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { Auth0Provider } from "@auth0/auth0-react";
+import {
+  Cart,
+  Home,
+  About,
+  Products,
+  SingleProduct,
+  Checkout,
+  Contact,
+  Error,
+} from "./Pages";
+import { SneakerDataProvider } from "./context/sneakers_context";
+import { CartContextProvider } from "./context/cart_context";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.StrictMode>
+      <Auth0Provider
+        domain='dev-w8do6587lb4jqnin.us.auth0.com'
+        clientId='Bb2ivUtzuDzrqw4tkavMBvGBUsHslFtr'
+        authorizationParams={{
+          redirect_uri: window.location.origin,
+        }}>
+        <SneakerDataProvider>
+          <CartContextProvider>
+            <Router>
+              <Navbar />
+              <Routes>
+                <Route path='/' element={<Home />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/cart' element={<Cart />} />
+                <Route path='/contact' element={<Contact />} />
+                <Route path='/products' element={<Products />} />
+                <Route path='/products/:id' element={<SingleProduct />} />
+                <Route path='/checkout' element={<Checkout />} />
+                <Route path='/*' element={<Error />} />
+              </Routes>
+            </Router>
+          </CartContextProvider>
+        </SneakerDataProvider>
+      </Auth0Provider>
+    </React.StrictMode>
   );
 }
 
