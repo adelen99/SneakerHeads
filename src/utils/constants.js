@@ -1,5 +1,3 @@
-import React from "react";
-import { FaCartShopping } from "react-icons/fa6";
 export const links = [
   { id: 1, text: "Home", url: "/" },
   { id: 2, text: "About", url: "/about" },

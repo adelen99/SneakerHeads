@@ -59,6 +59,7 @@ const Navbar = () => {
                 <h2 className='ml-8'>Hi, {user.name}</h2>
                 {user.picture ? (
                   <img
+                    alt={user.name}
                     src={user.picture}
                     className='rounded-xl absolute top-0 w-1/6 '
                   />

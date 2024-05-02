@@ -10,7 +10,6 @@ import {
 } from "@stripe/react-stripe-js";
 import axios from "axios";
 import { useCart } from "../context/cart_context";
-import { useSneakerData } from "../context/sneakers_context";
 import { useNavigate } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 

@@ -1,20 +1,13 @@
 import React, { useEffect, useState } from "react";
 import supabase from "../config/supabaseClient";
 import { useParams } from "react-router-dom";
-import {
-  FaMinus,
-  FaPlus,
-  FaCartPlus,
-  FaChevronRight,
-  FaChevronLeft,
-} from "react-icons/fa";
+import { FaCartPlus, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { useCart } from "../context/cart_context";
 
 const SingleProductPage = () => {
   const [sneakers, setSneakers] = useState([]);
   const [mainImageIndex, setMainImageIndex] = useState(0); // Track the index of the main image
   const [mainImage, setMainImage] = useState("");
-
   const { id } = useParams();
   const { addItemToCart } = useCart();
 

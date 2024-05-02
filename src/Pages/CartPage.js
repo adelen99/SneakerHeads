@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useCart } from "../context/cart_context";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -42,6 +42,7 @@ const CartPage = () => {
               className='flex gap-8 justify-start p-12 border-b border-gray-200'>
               <div className='flex flex-col items-center '>
                 <img
+                  alt={item.name}
                   src={item.images[0]}
                   className='w-40 h-32 rounded-lg object-cover'
                 />

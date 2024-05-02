@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Controller, useForm } from "react-hook-form";
 import IconEmail from "../utils/iconsForm/IconEmail";
 import IconInfo from "../utils/iconsForm/components/IconInfo";
 import IconPhone from "../utils/iconsForm/IconPhone";
 import FormElement from "../utils/iconsForm/components/FormElement";
-import Footer from "../components/Footer";
+
 const Contact = () => {
   const {
     control,
