@@ -1,7 +1,8 @@
 import React from "react";
+import { StripeCheckout } from "../components";
 
 const CheckoutPage = () => {
-  return <h2>hamham</h2>;
+  return <StripeCheckout />;
 };
 
 export default CheckoutPage;

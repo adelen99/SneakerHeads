@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Logo from "./Logo";
 import { links } from "../utils/constants";
 import { Link } from "react-router-dom";
-import { FaTimes } from "react-icons/fa";
 import { Menu, X } from "lucide-react";
 import { FaCartShopping } from "react-icons/fa6";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -34,28 +33,29 @@ const Navbar = () => {
   }, [showSidebar]);
 
   return (
-    <nav className='bg-gray-900 sticky top-0 z-[20] mx-auto flex flex-wrap w-full items-center justify-between border-gray-500 p-8 text-white'>
+    <nav className='bg-black sticky top-0 z-[20] mx-auto flex flex-wrap w-full items-center justify-between border-gray-500 p-8 text-white'>
       <Logo />
+
       <div>
         <div className='w-full justify-center'>
-          <ul className='hidden w-full justify-between  md:flex lg:gap-12 md:gap-8 '>
+          <ul className='hidden w-full  md:flex lg:gap-8 md:gap-4 md:text-sm lg:text-base '>
             {links.map((link) => {
               const { id, text, url } = link;
               return (
                 <li
                   key={id}
-                  className='hover:text-red-600 transition-colors duration-300 cursor-pointer'>
+                  className='hover:text-red-600 hover:font-bold transition-all duration-3000 cursor-pointer'>
                   <Link to={url}>{text}</Link>
                 </li>
               );
             })}
-            <li className='mt-1 mr-2 hover:text-red-600 transition-colors duration-300 cursor-pointer'>
+            <li className='mt-1 mr-2 hover:text-red-600 hover:font-bold transition-all duration-3000 cursor-pointer'>
               <Link to='/cart'>
                 <FaCartShopping />
               </Link>
             </li>
             {isAuthenticated && (
-              <li className='relative  mr-2 hover:text-red-600 transition-colors duration-300 cursor-pointer'>
+              <li className='relative  mr-2 hover:text-red-600 hover:font-bold transition-all duration-3000 cursor-pointer'>
                 <h2 className='ml-8'>Hi, {user.name}</h2>
                 {user.picture ? (
                   <img
@@ -66,7 +66,7 @@ const Navbar = () => {
               </li>
             )}
             {isAuthenticated ? (
-              <li className=' hover:text-red-600 transition-colors duration-300 cursor-pointer'>
+              <li className='hover:text-red-600 hover:font-bold transition-all duration-3000 cursor-pointer'>
                 <button
                   onClick={() =>
                     logout({
@@ -77,14 +77,14 @@ const Navbar = () => {
                 </button>
               </li>
             ) : (
-              <li className=' hover:text-red-600 transition-colors duration-300 cursor-pointer'>
+              <li className='hover:text-red-600 hover:font-bold transition-all duration-3000 cursor-pointer'>
                 <button onClick={() => loginWithRedirect()}>Log in</button>
               </li>
             )}
           </ul>
         </div>
 
-        <div className='md:hidden'>
+        <div className='md:hidden '>
           <button onClick={toggleSidebar}>
             {showSidebar ? <X /> : <Menu />}
           </button>
@@ -105,6 +105,29 @@ const Navbar = () => {
                 </li>
               );
             })}
+
+            <li className='hover:text-red-600 hover:font-bold transition-all duration-3000 cursor-pointer'>
+              <Link to='/cart' onClick={toggleSidebar}>
+                Cart
+              </Link>
+            </li>
+
+            {isAuthenticated ? (
+              <li className='hover:text-red-600 hover:font-bold transition-all duration-3000 cursor-pointer'>
+                <button
+                  onClick={() =>
+                    logout({
+                      logoutParams: { returnTo: window.location.origin },
+                    })
+                  }>
+                  Log Out
+                </button>
+              </li>
+            ) : (
+              <li className=' hover:text-red-600 transition-colors duration-300 cursor-pointer'>
+                <button onClick={() => loginWithRedirect()}>Log in</button>
+              </li>
+            )}
           </ul>
         </div>
       )}

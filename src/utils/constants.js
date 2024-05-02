@@ -7,6 +7,9 @@ export const links = [
   { id: 4, text: "Contact", url: "/contact" },
 ];
 
+export const logo =
+  "https://tsdfcxskidnevhjjwcin.supabase.co/storage/v1/object/public/images/Logo/logo.jpeg?t=2024-05-02T06%3A58%3A20.396Z";
+
 export const backgroundImages = [
   {
     id: 1,

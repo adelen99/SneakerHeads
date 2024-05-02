@@ -3,7 +3,7 @@ import { useCart } from "../context/cart_context";
 import { FaPlus, FaMinus } from "react-icons/fa6";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
+import { FaTimes } from "react-icons/fa";
 
 const CartPage = () => {
   const { cartItems, calculateTotal, removeItemFromCart, setCartItems } =
@@ -64,14 +64,28 @@ const CartPage = () => {
                     <FaPlus className='bg-gray-900 rounded-xl text-white' />
                   </button>
                 </div>
+                <div className='flex flex-wrap items-center '>
+                  <p className=''>Remove </p>
+                  <FaTimes
+                    className='border border-gray-900 rounded-full mt-1 ml-1'
+                    onClick={removeItemFromCart}
+                  />
+                </div>
               </div>
             </li>
           ))}
         </ul>
         {calculateTotal() === 0 && (
-          <h2 className='text-xl flex justify-center capitalize'>
-            Your cart is empty...
-          </h2>
+          <div className='flex flex-col justify-center'>
+            <h2 className='text-xl flex justify-center capitalize'>
+              Your cart is empty...
+            </h2>
+            <Link
+              to='/products'
+              className='button-primary capitalize text-center mt-5'>
+              fill it
+            </Link>
+          </div>
         )}
         {calculateTotal() !== 0 && (
           <div className='font-bold text-xl flex justify-center bg-gray-300 py-5 '>
