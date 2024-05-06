@@ -54,18 +54,7 @@ const Navbar = () => {
                 <FaCartShopping />
               </Link>
             </li>
-            {isAuthenticated && (
-              <li className='relative  mr-2 hover:text-red-600 hover:font-bold transition-all duration-3000 cursor-pointer'>
-                <h2 className='ml-8'>Hi, {user.name}</h2>
-                {user.picture ? (
-                  <img
-                    alt={user.name}
-                    src={user.picture}
-                    className='rounded-xl absolute top-0 w-1/6 '
-                  />
-                ) : null}
-              </li>
-            )}
+
             {isAuthenticated ? (
               <li className='hover:text-red-600 hover:font-bold transition-all duration-3000 cursor-pointer'>
                 <button

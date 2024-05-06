@@ -46,10 +46,23 @@ code {
 }
 
 .background2 {
-  background-image: url("https://tsdfcxskidnevhjjwcin.supabase.co/storage/v1/object/public/images/Logo/bg-5.jpg");
+  background-image: url("https://tsdfcxskidnevhjjwcin.supabase.co/storage/v1/object/public/images/Logo/bg9.jpeg");
   background-size: cover; /* Cover the entire container */
   background-position: center; /* Center the background image */
 }
 input {
   border: 2px solid #007bff;
+}
+/* Define transition styles */
+.page-transition {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.page-enter {
+  opacity: 0;
+}
+
+.page-enter-active {
+  opacity: 1;
 }

@@ -26,7 +26,7 @@ const sneakerReducer = (state, action) => {
 export const SneakerDataProvider = ({ children }) => {
   const initialState = {
     allSneakers: [],
-    singleSneake: [],
+    singleSneaker: [],
     featuredSneakers: [],
   };
   const [data, dispatch] = useReducer(sneakerReducer, initialState);

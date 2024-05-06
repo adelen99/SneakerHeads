@@ -3,6 +3,7 @@ import supabase from "../config/supabaseClient";
 import { useParams } from "react-router-dom";
 import { FaCartPlus, FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { useCart } from "../context/cart_context";
+import { toast } from "react-toastify";
 
 const SingleProductPage = () => {
   const [sneakers, setSneakers] = useState([]);
@@ -57,6 +58,7 @@ const SingleProductPage = () => {
 
   const handleAddToCart = (product) => {
     addItemToCart(product);
+    toast.success("Item added to cart!");
   };
 
   return (
@@ -71,6 +73,7 @@ const SingleProductPage = () => {
                 src={sneaker.images[mainImageIndex]}
                 alt=''
                 className='w-full lg:rounded-2xl h-auto'
+                style={{ height: "500px" }}
               />
               <ul>
                 <li>

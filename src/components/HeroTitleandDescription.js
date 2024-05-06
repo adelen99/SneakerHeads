@@ -7,7 +7,7 @@ const HeroTitleandDescription = () => {
         Welcome to Sneaker Heads
       </h1>
 
-      <p className='lg:text-2xl md:text-lg text-lg p-4 text-gray-300'>
+      <p className='lg:text-2xl md:text-lg text-lg p-4 text-stone-100'>
         Welcome to Sneaker Heads, your ultimate destination for sneaker
         enthusiasts. Dive into a world of style, comfort, and innovation with
         our curated collection of premium sneakers. Whether you're chasing the

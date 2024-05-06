@@ -9,6 +9,8 @@ const Products = () => {
   const [selectedBrand, setSelectedBrand] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const [displayLimit, setDisplayLimit] = useState(10);
+  const [showButton, setShowButton] = useState(true);
 
   // Extracting unique categories and brands
   const uniqueCategories = Array.from(
@@ -53,6 +55,11 @@ const Products = () => {
         : true)
   );
 
+  const handleShowMore = () => {
+    setDisplayLimit(filteredSneakers.length);
+    setShowButton(false);
+  };
+
   return (
     <div className='flex flex-col items-center '>
       {/* Brand filter buttons */}
@@ -87,7 +94,6 @@ const Products = () => {
           className='p-2 rounded border-gray-900'
         />
       </div>
-
       {/* Category filter dropdown */}
       <div className='mb-4'>
         <select
@@ -102,7 +108,6 @@ const Products = () => {
           ))}
         </select>
       </div>
-
       {/* Gender Filter */}
       <div>
         <select
@@ -117,10 +122,9 @@ const Products = () => {
           ))}
         </select>
       </div>
-
       {/* Display filtered sneakers */}
       <div className='flex flex-wrap gap-8 justify-center p-4 w-5/6'>
-        {filteredSneakers.map((sneaker) => (
+        {filteredSneakers.slice(0, displayLimit).map((sneaker) => (
           <div
             key={sneaker.id}
             className='card flex flex-col justify-between w-full sm:w-1/2  lg:w-96 hover:bg-gray-300'>
@@ -151,6 +155,13 @@ const Products = () => {
           </div>
         ))}
       </div>
+      {showButton && (
+        <button
+          className='button-primary p-4 mb-4 w-1/2'
+          onClick={handleShowMore}>
+          Show more products
+        </button>
+      )}
     </div>
   );
 };

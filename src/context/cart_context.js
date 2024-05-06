@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
+import { toast } from "react-toastify";
 
 const CartContext = createContext();
 
@@ -34,6 +35,7 @@ export const CartContextProvider = ({ children }) => {
     const newCartItems = [...cartItems];
     newCartItems.splice(index, 1);
     setCartItems(newCartItems);
+    toast.success("Item removed from cart! ");
   };
   const calculateTotal = () => {
     return cartItems.reduce(
